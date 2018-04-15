@@ -47,7 +47,7 @@ export default styles = StyleSheet.create({
       backgroundColor: Colors.PRIMARY,
     },
     container_bottomNavButtons: {
-      width: '25%',
+      width: '33%',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -82,8 +82,12 @@ export default styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: Colors.BACKGROUND,
   },
+  card_profileItem: {
+    width: '92.5%',
+    flexDirection: 'row',
+  },
   card_shoppingCart: {
-    width: '90%',
+    width: '95%',
     justifyContent: 'center',
   },
     card_shoppingCartItem: {

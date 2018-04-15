@@ -25,23 +25,15 @@ export default class BottomNav extends Component {
                 style={styles.container_bottomNavButtons}
                 onPress={() => {this.props.navigation.navigate('MediaScreen')}}>
                     <Icon
-                    name="package"
-                    type="feather"
+                    name="md-paper"
+                    type="ionicon"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate('CustomProductScreen')}}>
+                onPress={() => {this.props.navigation.navigate('NetworkScreen')}}>
                     <Icon
-                    name="bowl"
-                    type="entypo"
-                    color={Colors.ICON_PRIMARY}/>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate('RecipesScreen')}}>
-                    <Icon
-                    name="book"
+                    name="network"
                     type="entypo"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>

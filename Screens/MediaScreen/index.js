@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Text,
   View,
   Modal,
   ScrollView,
@@ -8,6 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { 
+  Text,
   Card,
   Button 
 } from 'react-native-elements';
@@ -62,11 +62,7 @@ export default class MediaScreen extends Component {
         onPress={() => this.setState({showPostModal: true, postURLtoShow: item.links[0].url})}>
           <Card
           style={styles.card_recipesItem}>
-            <Text>{item.title}</Text>
-            <Text>{item.content}</Text>
-            <Text>{item.links[0].url}</Text>
-            {item.categories.map(item => <Text>{item.name}</Text>)}
-
+            <Text h4>{item.title}</Text>
             {Object.keys(item).map(key => <Text>{key}: {String(item[key])}</Text>)}
           </Card>
         </TouchableOpacity>
