@@ -23,7 +23,7 @@ export default class BottomNav extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity 
                 style={styles.container_bottomNavButtons}
-                onPress={() => {this.props.navigation.navigate('ProductScreen')}}>
+                onPress={() => {this.props.navigation.navigate('MediaScreen')}}>
                     <Icon
                     name="package"
                     type="feather"

@@ -18,8 +18,7 @@ export default class HomeScreen extends Component {
                 navigation={this.props.navigation} />
                 <View style={styles.containerReverse}>
                   <View style={styles.container}>
-                    <Button title="RESET" onPress={() => DataHelper.debug.reset()} />
-                    <Button title="LOAD" onPress={() => DataHelper.debug.populateFixtures()} />
+
                   </View>
                   <BottomNav navigation={this.props.navigation} />
                 </View>
