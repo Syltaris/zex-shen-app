@@ -1,23 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
+import React, { Component } from 'react';
+import { DrawerNavigator } from 'react-navigation';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+import HomeScreen from './Screens/HomeScreen';
+
+import CustomDrawerComponent from './Components/CustomDrawerComponent';
+
+export default RootNavigator = DrawerNavigator({
+  HomeScreen: {
+    screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    },
   },
-});
+}, {
+  contentComponent: CustomDrawerComponent,
+})

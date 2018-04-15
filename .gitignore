@@ -29,6 +29,7 @@ node_modules
 
 android/*
 !android/app/src/main/res/*
+!android/app/build.gradle
 
 
 ios
