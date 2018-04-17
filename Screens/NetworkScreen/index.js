@@ -43,19 +43,22 @@ export default class NetworkScreen extends Component {
     return this.state.profilesData.map(profile => {
       return (
         <Card
+        key={profile.avatarUri}
         containerStyle={styles.card_profileItem}>
           <View style={{flexDirection: 'row'}}>
             <Avatar
             large
             rounded
-            source={{uri: profile.avatar_uri}}
+            source={{uri: profile.avatarUri}}
             style={{width: '10%', flexDirection: 'row'}}/>
             <View
             style={{paddingLeft: 20}}>
-              <Text>{profile.name}</Text>
-              <Text>Batch {profile.batch}</Text>
-              <Text>{profile.major}</Text>
-              <Text>SHEN {profile.shen_role}</Text>
+              <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
+              <View
+              style={{marginBottom: 0}}>
+                <Text>Batch {profile.batchNo}</Text>
+                <Text>{profile.major}</Text>
+              </View>
             </View>
           </View>
         </Card>
