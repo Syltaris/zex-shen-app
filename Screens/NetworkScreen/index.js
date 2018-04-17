@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   View,
   ScrollView
 } from 'react-native';
@@ -25,46 +26,48 @@ export default class NetworkScreen extends Component {
   }
 
   componentWillMount() {
-    fetch('http://13.250.47.34:1337/profile', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(resp => resp.json())
-    .then(respData => this.setState({profilesData: respData}))
-    .catch(err => this.setState({profilesData: [
-      {msg: 'error'},
-    ]}))
+    AsyncStorage.getItem('accessToken')
+    .then(jwt =>
+      fetch('http://13.250.47.34:1337/profile', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer `+ jwt
+        }
+      })
+      .then(resp => resp.json())
+      .then(respData => this.setState({profilesData: respData ? respData : []}))
+      .catch(err => this.setState({profilesData: [
+        {msg: 'error'},
+      ]}))
+    );
   }
 
   loadProfiles() {
-    return this.state.profilesData.map(profile => {
-      return (
-        <Card
-        key={profile.avatarUri}
-        containerStyle={styles.card_profileItem}>
-          <View style={{flexDirection: 'row'}}>
-            <Avatar
-            large
-            rounded
-            source={{uri: profile.avatarUri}}
-            style={{width: '10%', flexDirection: 'row'}}/>
+    return this.state.profilesData.map(profile => 
+      <Card
+      key={profile.avatarUri}
+      containerStyle={styles.card_profileItem}>
+        <View 
+        style={{flexDirection: 'row'}}>
+          <Avatar
+          medium
+          rounded
+          source={{uri: profile.avatarUri}}
+          style={{width: '23%', flexDirection: 'row'}}/>
+          <View
+          style={{paddingLeft: 20}}>
+            <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
             <View
-            style={{paddingLeft: 20}}>
-              <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
-              <View
-              style={{marginBottom: 0}}>
-                <Text>Batch {profile.batchNo}</Text>
-                <Text>{profile.major}</Text>
-              </View>
+            style={{marginBottom: 0}}>
+              <Text>Batch {profile.batchNo}</Text>
+              <Text>{profile.major}</Text>
             </View>
           </View>
-        </Card>
-
-      )
-    })
+        </View>
+      </Card>
+    )
   }
 
   render() {

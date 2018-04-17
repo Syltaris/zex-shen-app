@@ -31,8 +31,10 @@ export default class SplashScreen extends Component {
         .then(jwt => {
             if(!!jwt) {
                 this.props.navigation.navigate('HomeScreen');
+                resetAction();
             } else {
                 this.props.navigation.navigate('LoginScreen');
+                resetAction();
             }
         })
     }
