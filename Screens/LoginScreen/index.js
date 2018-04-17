@@ -56,12 +56,9 @@ export default class LoginScreen extends Component {
 
             this.setState({error_userName: !user, error_userPassword: !jwt});
 
-            return !!jwt;
-        })
-        .then(valid => {            
-            if(valid) {
-                this.props.navigation.navigate('HomeScreen');
-                AsyncStorage.setItem({accessToken: jwt});
+            if(!!jwt) {
+                AsyncStorage.setItem('accessToken', jwt)
+                .then(this.props.navigation.navigate('HomeScreen'));
             } 
         })
         .catch(err => this.setState({response: 'err'}))

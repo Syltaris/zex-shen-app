@@ -11,6 +11,7 @@ import BottomNav from '../../Components/BottomNav';
 import styles from '../../Stylesheets/styles';
 
 export default class HomeScreen extends Component {
+
   render() {
     return (
           <View style={styles.container}>

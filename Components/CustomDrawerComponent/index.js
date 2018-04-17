@@ -1,9 +1,13 @@
 import React from 'react';
 import {
+    AsyncStorage,
     View,
     Image,
     ScrollView
 } from 'react-native';
+import {
+    Button
+} from 'react-native-elements';
 import {
     DrawerItems,
     SafeAreaView,
@@ -19,6 +23,13 @@ export default CustomDrawerContentComponent = (props) => (
             <View style={styles.drawer_top}>
                 <Image />
             </View>
+            <Button
+            title="Logout"
+            onPress={() => 
+                AsyncStorage.removeItem('accessToken')
+                .then(props.navigation.navigate('LoginScreen'))
+            }
+            />
             <DrawerItems 
             {...props}
             items={props.items.filter((item) => item.routeName === 'Settings')}/>

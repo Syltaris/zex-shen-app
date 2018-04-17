@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { DrawerNavigator } from 'react-navigation';
 
+import SplashScreen from './Screens/SplashScreen';
 import LoginScreen from './Screens/LoginScreen';
 import HomeScreen from './Screens/HomeScreen';
 import MediaScreen from './Screens/MediaScreen';
@@ -18,6 +19,12 @@ import CustomDrawerComponent from './Components/CustomDrawerComponent';
 
 
 export default RootNavigator = DrawerNavigator({
+  SplashScreen: {
+    screen: SplashScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
   LoginScreen: {
     screen: LoginScreen,
     navigationOptions: {
