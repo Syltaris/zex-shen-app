@@ -126,6 +126,10 @@ export default styles = StyleSheet.create({
     backgroundColor: Colors.PRIMARY,
     alignItems: 'center',
   },
+    login_input_field: {
+      backgroundColor: 'white',
+      width: '100%'
+    },
   logo_container: {
     alignItems: 'center',
     backgroundColor: 'white',
