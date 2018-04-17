@@ -37,6 +37,14 @@ export default class BottomNav extends Component {
                     type="entypo"
                     color={Colors.ICON_PRIMARY}/>
                 </TouchableOpacity>
+                <TouchableOpacity 
+                style={styles.container_bottomNavButtons}
+                onPress={() => {this.props.navigation.navigate('LogbookScreen')}}>
+                    <Icon
+                    name="book"
+                    type="entypo"
+                    color={Colors.ICON_PRIMARY}/>
+                </TouchableOpacity>
             </View>
         );
     }

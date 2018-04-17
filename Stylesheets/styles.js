@@ -47,7 +47,7 @@ export default styles = StyleSheet.create({
       backgroundColor: Colors.PRIMARY,
     },
     container_bottomNavButtons: {
-      width: '33%',
+      width: '25%',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -117,5 +117,35 @@ export default styles = StyleSheet.create({
     backgroundColor: Colors.SECONDARY,
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  },
+
+  login_container_end: {
+    flex: 1,
+    height: 500,
+    justifyContent: 'space-evenly',
+    backgroundColor: Colors.PRIMARY,
+    alignItems: 'center',
+  },
+  logo_container: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    width: 270,
+    height: 270,
+    borderRadius: 135,
+  },
+    logo_style: {
+      width: 200,
+      height: 230,
+      margin: 25,
+    },
+  login_button_container: {
+    width: '100%',
+    backgroundColor: Colors.PRIMARY,
+  },    
+    login_button_style:{
+      marginTop: 5,
+      marginBottom: 5,
+      backgroundColor: "#2070E8",
+      borderRadius: 35,
+    },
 });
