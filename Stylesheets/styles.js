@@ -15,20 +15,6 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
   },
-  text_shoppingCartItemName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  text_shoppingCartItemPrice: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'right',
-  },
-  text_recipesDescription: {
-    fontSize: 16,
-    marginLeft: 10,
-  },
   container: {
     flex: 1,
     width: '100%',
@@ -53,27 +39,6 @@ export default styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: Colors.PRIMARY,
     },
-    container_sliders: {
-      flex: 0.7, 
-      width: '100%', 
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    container_shoppingCart: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
-    },
-    container_recipes: {
-      flex: 1,
-      width: '100%',
-      padding: 20,
-      backgroundColor: Colors.SECONDARY,
-      alignItems: 'center',
-      backgroundColor: Colors.BACKGROUND,
-    },
   containerReverse: {
       flex: 1,
       width: '100%',
@@ -85,18 +50,6 @@ export default styles = StyleSheet.create({
   card_profileItem: {
     width: '92.5%',
     flexDirection: 'row',
-  },
-  card_shoppingCart: {
-    width: '95%',
-    justifyContent: 'center',
-  },
-    card_shoppingCartItem: {
-      width: '100%',
-      margin: 0,
-    },
-  card_recipesItem: {
-    width: '90%',
-    justifyContent: 'center',
   },
   modal_transparentBlack: {
     flex: 1,
@@ -118,7 +71,6 @@ export default styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-
   login_container_end: {
     flex: 1,
     height: 500,
@@ -126,6 +78,9 @@ export default styles = StyleSheet.create({
     backgroundColor: Colors.PRIMARY,
     alignItems: 'center',
   },
+    login_input_field_group: {
+      width: '100%'
+    },
     login_input_field: {
       backgroundColor: 'white',
       width: '100%'

@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import {
   AsyncStorage,
   View,
-  ScrollView
+  Modal,
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import { 
   Avatar,
   Card,
   Text,
-  Button
+  Button,
+
 } from 'react-native-elements';
 
 import MainHeader from '../../Components/MainHeader';
@@ -19,7 +22,10 @@ export default class NetworkScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profilesData: []
+      profilesData: [],
+
+      showModal: false,
+      profileToShow: undefined
     }
 
     this.loadProfiles = this.loadProfiles.bind(this);
@@ -44,49 +50,70 @@ export default class NetworkScreen extends Component {
 
   loadProfiles() {
     return this.state.profilesData && this.state.profilesData.map(profile => 
-      <Card
+      <TouchableOpacity
       key={profile.name}
-      containerStyle={styles.card_profileItem}>
-        <View 
-        style={{flexDirection: 'row'}}>
-          <View style={{width: '30%'}}>
-            <Avatar
-            large
-            rounded
-            source={{uri: 'https://source.unsplash.com/random/100x100'}}
-            />
-          </View>
-          <View
-          style={{paddingLeft: 20}}>
-            <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
+      onPress={() => {
+        this.setState({
+          showModal: true,
+          profileToShow: profile
+        })
+      }}>
+        <Card
+        containerStyle={styles.card_profileItem}>
+          <View 
+          style={{flexDirection: 'row'}}>
+            <View style={{width: '30%'}}>
+              <Avatar
+              large
+              rounded
+              source={{uri: 'https://source.unsplash.com/random/100x100'}}
+              />
+            </View>
             <View
-            style={{marginBottom: 0}}>
-              <Text>Batch {profile.batchNo}</Text>
-              <Text>{profile.major}</Text>
-              <Text>{profile.companyName}</Text>
+            style={{paddingLeft: 20}}>
+              <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
+              <View
+              style={{marginBottom: 0}}>
+                <Text>Batch {profile.batchNo}</Text>
+                <Text>{profile.major}</Text>
+                <Text>{profile.companyName}</Text>
+              </View>
             </View>
           </View>
-        </View>
-      </Card>
+        </Card>
+      </TouchableOpacity>
     )
   }
 
   render() {
     return (
-          <View style={styles.container}>
-              <MainHeader 
-              title="SHEN NETWORK"
-              navigation={this.props.navigation} />
-              <View style={styles.containerReverse}>
-                <View style={styles.container}>
-                  <ScrollView
-                  style={{width: '100%'}}>
-                    {this.loadProfiles()}
-                  </ScrollView>
-                </View>
-                <BottomNav navigation={this.props.navigation} />
-              </View>
+      <View style={styles.container}>
+          <Modal
+          transparent
+          animationType="fade"
+          visible={this.state.showModal}
+          onRequestClose={() => this.setState({showModal: false})}
+          >
+            <View style={styles.modal_transparentBlack}>
+              <Card>
+                <Text style={styles.text_header}>{this.state.profileToShow && this.state.profileToShow.name}</Text>
+                <Text>{this.state.profileToShow && this.state.profileToShow.major}</Text>
+              </Card>
+            </View>
+          </Modal>
+          <MainHeader 
+          title="SHEN NETWORK"
+          navigation={this.props.navigation} />
+          <View style={styles.containerReverse}>
+            <View style={styles.container}>
+              <ScrollView
+              style={{width: '100%'}}>
+                {this.loadProfiles()}
+              </ScrollView>
+            </View>
+            <BottomNav navigation={this.props.navigation} />
           </View>
+      </View>
     );
   }
 }
