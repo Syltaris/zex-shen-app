@@ -9,14 +9,13 @@ import { DrawerNavigator } from 'react-navigation';
 
 import SplashScreen from './Screens/SplashScreen';
 import LoginScreen from './Screens/LoginScreen';
+import RegisterScreen from './Screens/RegisterScreen';
 import HomeScreen from './Screens/HomeScreen';
 import MediaScreen from './Screens/MediaScreen';
 import NetworkScreen from './Screens/NetworkScreen';
 import LogbookScreen from './Screens/LogbookScreen';
 
 import CustomDrawerComponent from './Components/CustomDrawerComponent';
-
-
 
 export default RootNavigator = DrawerNavigator({
   SplashScreen: {
@@ -27,6 +26,12 @@ export default RootNavigator = DrawerNavigator({
   },
   LoginScreen: {
     screen: LoginScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  RegisterScreen: {
+    screen: RegisterScreen,
     navigationOptions: {
       header: null,
     },

@@ -16,25 +16,16 @@ import {
 
 import styles from '../../Stylesheets/styles';
 
-const resetAction = NavigationActions.reset({
-    index: 0,
-    actions: [NavigationActions.navigate({ routeName: 'Home' })],
-});
-
 export default class SplashScreen extends Component {
     constructor(props) {
         super(props);
-    }
 
-    componentWillMount() {
         AsyncStorage.getItem('accessToken')
         .then(jwt => {
             if(!!jwt) {
                 this.props.navigation.navigate('HomeScreen');
-                resetAction();
             } else {
                 this.props.navigation.navigate('LoginScreen');
-                resetAction();
             }
         })
     }

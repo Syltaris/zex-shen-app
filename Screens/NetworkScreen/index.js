@@ -23,12 +23,10 @@ export default class NetworkScreen extends Component {
     }
 
     this.loadProfiles = this.loadProfiles.bind(this);
-  }
 
-  componentWillMount() {
     AsyncStorage.getItem('accessToken')
     .then(jwt =>
-      fetch('http://13.250.47.34:1337/profile', {
+      fetch('http://13.250.45.171:1337/profile', {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -37,7 +35,7 @@ export default class NetworkScreen extends Component {
         }
       })
       .then(resp => resp.json())
-      .then(respData => this.setState({profilesData: respData ? respData : []}))
+      .then(respData => this.setState({profilesData: respData}))
       .catch(err => this.setState({profilesData: [
         {msg: 'error'},
       ]}))
@@ -45,17 +43,19 @@ export default class NetworkScreen extends Component {
   }
 
   loadProfiles() {
-    return this.state.profilesData.map(profile => 
+    return this.state.profilesData && this.state.profilesData.map(profile => 
       <Card
-      key={profile.avatarUri}
+      key={profile.name}
       containerStyle={styles.card_profileItem}>
         <View 
         style={{flexDirection: 'row'}}>
-          <Avatar
-          medium
-          rounded
-          source={{uri: profile.avatarUri}}
-          style={{width: '23%', flexDirection: 'row'}}/>
+          <View style={{width: '30%'}}>
+            <Avatar
+            large
+            rounded
+            source={{uri: 'https://source.unsplash.com/random/100x100'}}
+            />
+          </View>
           <View
           style={{paddingLeft: 20}}>
             <Text style={{fontWeight: 'bold'}}>{profile.name}{profile.shenRole ? ', SHEN ' + profile.shenRole : ''}</Text>
@@ -63,6 +63,7 @@ export default class NetworkScreen extends Component {
             style={{marginBottom: 0}}>
               <Text>Batch {profile.batchNo}</Text>
               <Text>{profile.major}</Text>
+              <Text>{profile.companyName}</Text>
             </View>
           </View>
         </View>

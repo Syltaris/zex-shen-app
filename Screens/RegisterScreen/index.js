@@ -16,28 +16,32 @@ import {
 
 import styles from '../../Stylesheets/styles';
 
-export default class LoginScreen extends Component {
+export default class RegisterScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             input_userName: '',
-            error_userName: false,
+            error_userName: false,        
+            input_userEmail: '',
+            error_userEmail: false,
             input_userPassword: '',
             error_userPassword: false,
             response: {msg: 'nah'},
         }
 
-        this.login = this.login.bind(this);
+        this.register = this.register.bind(this);
 
         this.updatePasswordInput = this.updatePasswordInput.bind(this);
+        this.updateEmailInput = this.updateEmailInput.bind(this);
         this.updateUsernameInput = this.updateUsernameInput.bind(this);
     }
 
-    login() {
-        fetch('http://13.250.45.171:1337/auth/local', {
+    register() {
+        fetch('http://13.250.45.171:1337/auth/local/register', {
             method: 'POST',
             body: JSON.stringify({
-                identifier: this.state.input_userName,
+                username: this.state.input_userName,
+                email: this.state.input_userEmail,
                 password: this.state.input_userPassword
             }),
             headers: {
@@ -60,16 +64,12 @@ export default class LoginScreen extends Component {
     }
 
     updateUsernameInput(text) {this.setState({input_userName: text})}
+    updateEmailInput(text) {this.setState({input_userEmail: text})}
     updatePasswordInput(text) {this.setState({input_userPassword: text})}
 
     render() {
         return(
             <View style={styles.login_container_end}>
-                <View style={styles.logo_container}>
-                    <Image
-                    style={styles.logo_style}
-                    source={require('../../res/img/logo.png')} />
-                </View>
                 <Input
                 containerStyle={styles.login_input_field}
                 placeholder='USERNAME'
@@ -80,6 +80,17 @@ export default class LoginScreen extends Component {
                     type='entypo' />
                 }
                 onChangeText={this.updateUsernameInput}
+                />
+                <Input
+                containerStyle={styles.login_input_field}
+                placeholder='EMAIL'
+                errorMessage={this.state.error_userEmail ? 'Please check your email address.' : undefined}
+                leftIcon={
+                    <Icon
+                    name='email'
+                    type='entypo' />
+                }
+                onChangeText={this.updateEmailInput}
                 />
                 <Input
                 secureTextEntry
@@ -96,18 +107,10 @@ export default class LoginScreen extends Component {
 
                 <View style={styles.login_button_container}>
                     <Button
-                        large
-                        buttonStyle= {styles.login_button_style}  
-                        onPress={() => this.props.navigation.navigate('RegisterScreen')}      
-                        title='REGISTER' />
-                </View>
-
-                <View style={styles.login_button_container}>
-                    <Button
                     large
                     buttonStyle= {styles.login_button_style}  
-                    onPress={this.login}      
-                    title='LOGIN' />
+                    onPress={this.register}      
+                    title='SUBMIT' />
                 </View>
             </View>
         );

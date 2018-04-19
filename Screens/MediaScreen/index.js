@@ -36,11 +36,9 @@ export default class MediaScreen extends Component {
 
     this.post = this.post.bind(this);
     this.load_items = this.load_items.bind(this);
-  }
 
-  componentWillMount() {
     this.post();
- }
+  }
 
   post() {
     fetch('https://medium.com/feed/nus-overseas-colleges-shanghai')
