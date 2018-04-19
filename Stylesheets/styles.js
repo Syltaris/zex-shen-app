@@ -15,6 +15,12 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
   },
+  text_header_light: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    margin: 10,
+    color: 'white'
+  },
   container: {
     flex: 1,
     width: '100%',
